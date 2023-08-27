@@ -27,7 +27,7 @@ Link [here](https://documenter.getpostman.com/view/20411126/2s9Y5YS2up)
 - `npm run dev` to start development server
 - `npm run migrate:dev` to migrate in dev mode
 - On postman/postwoman/insomnia/etc, run the server endpoints, `http://localhost:8080/...`
-- using the staging server on heroku `https://lannister-pay.herokuapp.com/...`
+- using the staging server: `https://rise-be-ew8h.onrender.com`
 - `npm run test` to run all test suites
 - `npm run lint:fix` to fix all linting issues
 
