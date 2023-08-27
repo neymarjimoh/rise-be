@@ -52,7 +52,7 @@ if (cluster.isPrimary) {
 
   const shutdown = async (signal: NodeJS.Signals) => {
     console.log(
-      `Worker ${cluster.worker.process.pid} received ${signal}. Shutting down gracefully...`
+      `Worker received ${signal}. Shutting down gracefully...`
     );
 
     try {
@@ -65,7 +65,7 @@ if (cluster.isPrimary) {
       await new Promise<void>((resolve) => {
         server.close(() => {
           console.log(
-            `Worker ${cluster.worker.process.pid} has shut down. Goodbye!`
+            `Worker has shut down. Goodbye!`
           );
           resolve();
         });
@@ -79,7 +79,7 @@ if (cluster.isPrimary) {
 
   server.listen(appPort, () => {
     console.log(
-      `Worker ${cluster.worker.process.pid} started on port ${appPort}!`
+      `Worker started on port ${appPort}!`
     );
   });
 }
