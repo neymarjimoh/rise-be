@@ -1,4 +1,5 @@
 import envs from "./envs";
-import redisClient from "./redis";
+import RedisService from "./redis";
 
-export { envs as ENVS, redisClient };
+export { envs as ENVS, RedisService };
+export * from "./pg";

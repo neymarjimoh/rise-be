@@ -13,10 +13,16 @@ export default {
     user: process.env.DB_USER,
     name: process.env.DB_NAME,
     host: process.env.DB_HOST,
+    password: process.env.DB_PASSWORD,
   },
   redis: {
     host: process.env.REDIS_HOST,
     port: process.env.REDIS_PORT,
     password: process.env.REDIS_PASSWORD,
+  },
+  jwt: {
+    secret: process.env.JWT_SECRET,
+    expiresIn: process.env.JWT_EXPIRES_IN,
+    salt: process.env.SALT_ROUNDS || 10,
   }
 };
