@@ -3,10 +3,11 @@ import { ENVS } from ".";
 
 class RedisService {
   private client: RedisClientType;
+  private url = ENVS.redis.url || `redis://${ENVS.redis.host}:${ENVS.redis.port}`;
 
   constructor() {
     this.client = createClient({
-      url: `redis://${ENVS.redis.host}:${ENVS.redis.port}`,
+      url: this.url,
     });
 
     (async () => {
