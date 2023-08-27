@@ -5,7 +5,7 @@ import express, { Application, Request, Response, NextFunction } from "express";
 import cors from "cors";
 import morgan from "morgan";
 import helmet from "helmet";
-import { ENVS, redisClient } from "./config";
+import { ENVS, RedisService } from "./config";
 import { errorResponse } from "./helpers/response";
 import appRoutes from "./routes";
 
@@ -58,7 +58,7 @@ if (cluster.isPrimary) {
     try {
       // Close Redis connection
       console.log("Closing Redis connection...");
-      await redisClient.quit();
+      await RedisService.closeClient();
 
       // Close the server
       console.log("Closing the server...");

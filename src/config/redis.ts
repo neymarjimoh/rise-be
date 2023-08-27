@@ -1,15 +1,33 @@
-import { createClient } from "redis";
+import { createClient, RedisClientType } from "redis";
 import { ENVS } from ".";
 
-const client = createClient({
-  url: `redis://${ENVS.redis.host}:${ENVS.redis.port}`,
-});
+class RedisService {
+  private client: RedisClientType;
 
-(async () => {
-  await client.connect();
-})();
+  constructor() {
+    this.client = createClient({
+      url: `redis://${ENVS.redis.host}:${ENVS.redis.port}`,
+    });
 
-client.on("connect", () => console.log("Connected to our redis instance!"));
-client.on("error", (err) => console.log("Redis Client Error due to: ", err));
+    (async () => {
+      await this.client.connect();
+    })();
 
-export default client;
+    this.client.on("connect", () =>
+      console.log("Connected to our redis instance!")
+    );
+    this.client.on("error", (err) =>
+      console.log("Redis Client Error due to: ", err)
+    );
+  }
+
+  public getClient(): RedisClientType {
+    return this.client;
+  }
+
+  public async closeClient(): Promise<any> {
+    return await this.client.quit();
+  }
+}
+
+export default new RedisService();
